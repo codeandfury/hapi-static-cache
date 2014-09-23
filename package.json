@@ -15,7 +15,7 @@
     "static",
     "cache"
   ],
-  "author": "davemackintosh",
+  "author": "Dave Mackintosh <me@davemackintosh.co.uk> (http://davemackintosh.co.uk)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hatchback/hapi-static-cache/issues"
