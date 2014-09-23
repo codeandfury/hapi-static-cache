@@ -1,0 +1,24 @@
+{
+  "name": "hapi-static-cache",
+  "version": "0.0.1",
+  "description": "Static file caching for saving time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hatchback/hapi-static-cache"
+  },
+  "keywords": [
+    "hapi",
+    "static",
+    "cache"
+  ],
+  "author": "davemackintosh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hatchback/hapi-static-cache/issues"
+  },
+  "homepage": "https://github.com/hatchback/hapi-static-cache"
+}
