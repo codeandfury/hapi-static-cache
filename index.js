@@ -23,7 +23,7 @@
         // Fetch a file.
         files.getFile(request, function(file) {
           // Start the response
-          var respond = reply(file.value.toString());
+          var respond = reply(file.value);
 
           // Add headers
           if (file.headers) {
