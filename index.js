@@ -22,6 +22,7 @@
     next();
   };
 
+  // Set the attributes for this plugin.
   module.exports.register.attributes = {
     pkg: require('./package.json')
   };
