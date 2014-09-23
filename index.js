@@ -1,5 +1,9 @@
 /**
+ * Plugin registration and routing.
  *
+ * @version 0.0.1
+ * @since   0.0.1
+ * @author  davemackintosh
  */
 (function() {
   'use strict';
@@ -15,7 +19,19 @@
     plugin.route({
       method: 'GET',
       path: util.format('%s/{static_request*}', options.resources || '/static'),
-      handler: files.getFile
+      handler: function(request, reply) {
+        files.getFile(request, function(file) {
+          // Start the response
+          var respond = reply(file.value.toString());
+
+          // Add headers
+          if (file.headers) {
+            file.headers.forEach(function(header) {
+              respond.header(header.type, header.value);
+            });
+          }
+        });
+      }
     });
 
     // Continue.
