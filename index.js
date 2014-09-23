@@ -20,6 +20,7 @@
       method: 'GET',
       path: util.format('%s/{static_request*}', options.resources || '/static'),
       handler: function(request, reply) {
+        // Fetch a file.
         files.getFile(request, function(file) {
           // Start the response
           var respond = reply(file.value.toString());
