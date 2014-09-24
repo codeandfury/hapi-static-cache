@@ -4,7 +4,7 @@
   "description": "Static file caching for saving time.",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
