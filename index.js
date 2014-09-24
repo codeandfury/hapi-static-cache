@@ -15,13 +15,20 @@
         // Util functions.
         var util = require('util');
 
+        // Default options.resources to /static
+        options.resources = options.resources || '/static';
+
         // Create a listener for static files.
         plugin.route({
             method: 'GET',
-            path: util.format('%s/{static_request*}', options.resources || '/static'),
+            path: util.format('%s/{static_request*}', options.resources),
             handler: function(request, reply) {
+                var urlPath = request.url.path;
+                if (options.publicPath) {
+                    urlPath = urlPath.replace(options.resources, options.publicPath);
+                }
                 // Fetch a file.
-                files.getFile(request, function(file) {
+                files.getFile(urlPath, function(file) {
                     // Start the response
                     var respond = reply(file.value);
 
