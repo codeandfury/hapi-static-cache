@@ -6,42 +6,42 @@
  * @author  davemackintosh
  */
 (function() {
-  'use strict';
+    'use strict';
 
-  module.exports.register = function register_static_cache(plugin, options, next) {
-    // Get the files api.
-    var files = require('./lib/files');
+    module.exports.register = function register_static_cache(plugin, options, next) {
+        // Get the files api.
+        var files = require('./lib/files');
 
-    // Util functions.
-    var util  = require('util');
+        // Util functions.
+        var util = require('util');
 
-    // Create a listener for static files.
-    plugin.route({
-      method: 'GET',
-      path: util.format('%s/{static_request*}', options.resources || '/static'),
-      handler: function(request, reply) {
-        // Fetch a file.
-        files.getFile(request, function(file) {
-          // Start the response
-          var respond = reply(file.value);
+        // Create a listener for static files.
+        plugin.route({
+            method: 'GET',
+            path: util.format('%s/{static_request*}', options.resources || '/static'),
+            handler: function(request, reply) {
+                // Fetch a file.
+                files.getFile(request, function(file) {
+                    // Start the response
+                    var respond = reply(file.value);
 
-          // Add headers
-          if (file.headers) {
-            file.headers.forEach(function(header) {
-              respond.header(header.type, header.value);
-            });
-          }
+                    // Add headers
+                    if (file.headers) {
+                        file.headers.forEach(function(header) {
+                            respond.header(header.type, header.value);
+                        });
+                    }
+                });
+            }
         });
-      }
-    });
 
-    // Continue.
-    next();
-  };
+        // Continue.
+        next();
+    };
 
-  // Set the attributes for this plugin.
-  module.exports.register.attributes = {
-    pkg: require('./package.json')
-  };
+    // Set the attributes for this plugin.
+    module.exports.register.attributes = {
+        pkg: require('./package.json')
+    };
 
 })();
